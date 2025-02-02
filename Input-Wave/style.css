@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffff;
+  color: #fff;
+  font-family: "Quicksand", serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  background-color: rgb(2, 44, 59);
+  padding: 20px 40px;
+  border-radius: 5px;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container a {
+  text-decoration: none;
+  color: lightblue;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  font-family: inherit;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s ease-in;
+  background-color: transparent;
+  color: #fff;
+  outline: 1px solid lightblue;
+}
+
+.btn:focus {
+  background-color: lightblue;
+  color: #000b;
+  transform: scale(0.95);
+}
+
+.text {
+  margin-top: 30px;
+}
+
+.form__container {
+  position: relative;
+  margin: 20px 0 40px;
+  width: 300px;
+}
+
+.form__container input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px #fff solid;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+  position: relative;
+  z-index: 100;
+}
+
+.form__container input:focus,
+.form__container input:valid {
+  outline: 0;
+  border-bottom-color: lightblue;
+  padding: 30px 0 0 0;
+}
+
+.form__container label {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  pointer-events: none;
+}
+
+.form__container label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  transition: 0.2s ease-in;
+}
+
+.form__container input:focus ~ label span,
+.form__container input:valid ~ label span {
+  color: lightblue;
+  transform: translateY(-30px);
+}
