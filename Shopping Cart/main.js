@@ -19,9 +19,9 @@ const setProducts = (data) =>
       `;
   });
 ////////
-const checkQuantity = (id) => {
+const checkQuantityInCart = (id) => {
   let exist = cart.findIndex((cartProduct) => cartProduct?.id === id);
-  if (exist != undefined) {
+  if (exist != -1) {
     return cart[exist];
   } else {
     return null;
@@ -32,17 +32,24 @@ const checkStore = (products, id) => {
   return products.find((product) => product?.id === id);
 };
 ////////
-const addToCart = (id) => {
-  let cartProduct = checkQuantity(id);
-  let product = checkStore(id);
-  if (cartProduct === null) {
+const addToCart = (products, id) => {
+  let cartProduct = checkQuantityInCart(id);
+  let product = checkStore(products, id);
+  if(cartProduct === null) {
     cart.push({
       id: product?.id,
       quantity: 1,
     });
-  } else {
+  }else {
     cartProduct.quantity++;
+    if(cartProduct?.quantity > product?.rating?.count){
+      alert("we only have " + product?.rating?.count + "aviable");
+      cartProduct.quantity = product?.rating?.count;
+    }
+    localStorage.setItem('cart', JSON.stringify(cart))
   }
+
+  console.log(cart)
 };
 ////////
 const handleCart = (products) => {
@@ -54,7 +61,7 @@ const handleCart = (products) => {
       const product = checkStore(products, productId);
       if (product?.rating?.count > 0) {
         //add prduct to cart
-        addToCart(productId);
+        addToCart(products, productId);
       }
     });
   });
