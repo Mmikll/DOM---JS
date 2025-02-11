@@ -2,7 +2,7 @@ let layoutProducts = document.querySelector(".layout__products");
 let layoutCart = document.querySelector(".layout__cart");
 let cartProducts = document.querySelector(".cart__products");
 let totalPrice = document.querySelector(".total__price");
-const closeCart = document.querySelector(".cart__ico");
+const closeCart = document.querySelector('.cart__ico');
 let cart = [];
 //////////
 const setProducts = (data) =>
@@ -157,9 +157,9 @@ const showCart = (products) => {
   });
 };
 ///////////
-closeCart.addEventListener("click", () => {
+closeCart.addEventListener('click', () => {
   layoutCart.classList.add("layout__cart--hide");
-});
+})
 ///////////
 const loadCart = (products) => {
   let myCart = JSON.parse(localStorage.getItem("cart"));
