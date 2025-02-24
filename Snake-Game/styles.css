@@ -50,9 +50,10 @@ body,
   z-index: 100;
 }
 
-.scores {
+#scores {
   display: flex;
   justify-content: space-between;
+  margin: 0 20px;
 }
 
 #score {

@@ -63,10 +63,11 @@ const drawGameMap = () => {
 };
 //update Highscore
 const updateHighScore = () => {
-  const highscore = localStorage.getItem("highscore") || "0";
+  const highscore = localStorage.getItem("highscore") || 0;
   const currentScore = snake.length - 1;
-  if (currentScore > +highscore) {
-    localStorage.setItem("highscore", currentScore.toString());
+
+  if (currentScore > highscore) {
+    localStorage.setItem("highscore", currentScore);
     highScoreText.textContent = currentScore.toString().padStart(3, "0");
   }
   highScoreText.style.display = "block";
@@ -168,16 +169,24 @@ const handleKeyPress = (e) => {
   } else {
     switch (e.key) {
       case "ArrowUp":
-        direction = "up";
+        if (direction !== "down") {
+          direction = "up";
+        }
         break;
       case "ArrowDown":
-        direction = "down";
+        if (direction !== "up") {
+          direction = "down";
+        }
         break;
       case "ArrowLeft":
-        direction = "left";
+        if (direction !== "right") {
+          direction = "left";
+        }
         break;
       case "ArrowRight":
-        direction = "right";
+        if (direction !== "left") {
+          direction = "right";
+        }
         break;
     }
   }
