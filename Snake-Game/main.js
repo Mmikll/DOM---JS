@@ -69,6 +69,8 @@ const updateHighScore = () => {
   if (currentScore > highscore) {
     localStorage.setItem("highscore", currentScore);
     highScoreText.textContent = currentScore.toString().padStart(3, "0");
+  } else {
+    highScoreText.textContent = highscore.toString().padStart(3, "0");
   }
   highScoreText.style.display = "block";
 };
